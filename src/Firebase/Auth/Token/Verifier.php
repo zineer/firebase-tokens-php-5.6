@@ -41,14 +41,18 @@ final class Verifier implements Domain\Verifier
      * @deprecated 1.9.0
      * @see \Kreait\Firebase\JWT\IdTokenVerifier
      */
-    public function __construct(string $projectId, KeyStore $keys = null, Signer $signer = null)
+    public function __construct($projectId, KeyStore $keys = null, Signer $signer = null)
     {
         $this->projectId = $projectId;
-        $this->keys = $keys ?? new HttpKeyStore();
-        $this->signer = $signer ?? new Sha256();
+        
+        $keys = !is_null($keys) ? $keys : new HttpKeyStore();
+        $signer = !is_null($signer) ? $signer : new Sha256();
+
+        $this->keys = $keys;
+        $this->signer = $signer;
     }
 
-    public function verifyIdToken($token): Token
+    public function verifyIdToken($token)
     {
         if (!($token instanceof Token)) {
             $token = (new Parser())->parse($token);
@@ -122,7 +126,7 @@ final class Verifier implements Domain\Verifier
         }
     }
 
-    private function getKey(Token $token): string
+    private function getKey(Token $token)
     {
         if (!$token->hasHeader('kid')) {
             throw new InvalidToken($token, 'The header "kid" is missing.');

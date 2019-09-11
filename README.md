@@ -28,7 +28,7 @@ Achieve more with the [Firebase Admin SDK](https://github.com/kreait/firebase-ph
 ## Installation
 
 ```bash
-composer require kreait/firebase-tokens
+composer require nathanfeitoza/firebase-tokens-php-5.6
 ```
 
 ## Simple usage

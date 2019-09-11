@@ -32,18 +32,19 @@ final class Handler implements Domain\Generator, Domain\Verifier
      * @param string $privateKey
      * @param KeyStore|null $keyStore
      */
-    public function __construct(string $projectId, string $clientEmail, string $privateKey, KeyStore $keyStore = null)
+    public function __construct($projectId, $clientEmail, $privateKey, $keyStore = null)
     {
         $this->generator = new Generator($clientEmail, $privateKey);
-        $this->verifier = new Verifier($projectId, $keyStore ?? new HttpKeyStore());
+        $keyStore = is_null($keyStore) ? new HttpKeyStore() : $keyStore;
+        $this->verifier = new Verifier($projectId, $keyStore);
     }
 
-    public function createCustomToken($uid, array $claims = [], \DateTimeInterface $expiresAt = null): Token
+    public function createCustomToken($uid, array $claims = [], \DateTimeInterface $expiresAt = null)
     {
         return $this->generator->createCustomToken($uid, $claims, $expiresAt);
     }
 
-    public function verifyIdToken($token): Token
+    public function verifyIdToken($token)
     {
         return $this->verifier->verifyIdToken($token);
     }

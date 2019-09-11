@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Firebase\Auth\Token\Cache;
 
 use DateInterval;
@@ -22,7 +20,7 @@ final class InMemoryCache implements CacheInterface
 
     public function get($key, $default = null)
     {
-        if ($item = $this->items[$key] ?? null) {
+        if ($item = $this->items[$key]) {
             list($expiresAt, $value) = $item;
 
             if (!$expiresAt || (new \DateTime() < $expiresAt)) {
@@ -97,7 +95,7 @@ final class InMemoryCache implements CacheInterface
 
     public function has($key)
     {
-        if ($item = $this->items[$key] ?? null) {
+        if ($item = $this->items[$key]) {
             $expiresAt = $item[0];
 
             if (!$expiresAt || (new \DateTime() < $expiresAt)) {
