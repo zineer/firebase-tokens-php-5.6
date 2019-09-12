@@ -4,18 +4,14 @@ A library to work with [Google Firebase](https://firebase.google.com) tokens. Yo
 [create custom tokens](https://firebase.google.com/docs/auth/admin/create-custom-tokens) and 
 [verify ID Tokens](https://firebase.google.com/docs/auth/admin/verify-id-tokens).
 
-Achieve more with the [Firebase Admin SDK](https://github.com/kreait/firebase-php) for PHP (which uses this library).
+Achieve more with the [Firebase Admin SDK](https://github.com/nathanfeitoza/firebase-tokens-php-5.6) for PHP 5.6 (which uses this library).
 
-[![Current version](https://img.shields.io/packagist/v/kreait/firebase-tokens.svg)](https://packagist.org/packages/kreait/firebase-tokens)
-[![Supported PHP version](https://img.shields.io/packagist/php-v/kreait/firebase-tokens.svg)]()
-[![Monthly Downloads](https://img.shields.io/packagist/dm/kreait/firebase-tokens.svg)](https://packagist.org/packages/kreait/firebase-tokens/stats)
-[![Total Downloads](https://img.shields.io/packagist/dt/kreait/firebase-tokens.svg)](https://packagist.org/packages/kreait/firebase-tokens/stats)
-[![Discord](https://img.shields.io/discord/523866370778333184.svg?color=7289da&logo=discord)](https://discord.gg/nbgVfty)
+[![Current version](https://img.shields.io/packagist/v/nathanfeitoza/firebase-tokens-php-5.6.svg)](https://packagist.org/packages/nathanfeitoza/firebase-tokens-php-5.6)
+[![Supported PHP version](https://img.shields.io/packagist/php-v/nathanfeitoza/firebase-tokens-php-5.6.svg)]()
+[![Monthly Downloads](https://img.shields.io/packagist/dm/nathanfeitoza/firebase-tokens-php-5.6.svg)](https://packagist.org/packages/nathanfeitoza/firebase-tokens-php-5.6/stats)
+[![Total Downloads](https://img.shields.io/packagist/dt/nathanfeitoza/firebase-tokens-php-5.6.svg)](https://packagist.org/packages/nathanfeitoza/firebase-tokens-php-5.6/stats)
 
-[![Build Status](https://travis-ci.org/kreait/firebase-tokens-php.svg?branch=master)](https://travis-ci.org/kreait/firebase-tokens-php)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=kreait_firebase-tokens-php&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=kreait_firebase-tokens-php)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=kreait_firebase-tokens-php&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=kreait_firebase-tokens-php)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=kreait_firebase-tokens-php&metric=coverage)](https://sonarcloud.io/dashboard?id=kreait_firebase-tokens-php) 
+[![Build Status](https://travis-ci.org/nathanfeitoza/firebase-tokens-php-5.6.svg?branch=master)](https://travis-ci.org/nathanfeitoza/firebase-tokens-php-5.6)
 
 - [Installation](#installation)
 - [Simple Usage](#simple-usage)
