@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Action;
 
 use InvalidArgumentException;
@@ -18,7 +16,7 @@ final class VerifyIdToken
     {
     }
 
-    public static function withToken(string $token): self
+    public static function withToken($token)
     {
         $action = new self();
         $action->token = $token;
@@ -26,7 +24,7 @@ final class VerifyIdToken
         return $action;
     }
 
-    public function withLeewayInSeconds(int $seconds): self
+    public function withLeewayInSeconds($seconds)
     {
         if ($seconds < 0) {
             throw new InvalidArgumentException('Leeway must not be negative');
@@ -38,12 +36,12 @@ final class VerifyIdToken
         return $action;
     }
 
-    public function token(): string
+    public function token()
     {
         return $this->token;
     }
 
-    public function leewayInSeconds(): int
+    public function leewayInSeconds()
     {
         return $this->leewayInSeconds;
     }
