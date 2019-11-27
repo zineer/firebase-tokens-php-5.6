@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Action\VerifyIdToken;
 
 use Firebase\JWT\JWT;
@@ -22,12 +20,12 @@ final class WithHandlerDiscovery implements Handler
         $this->handler = self::discoverHandler($projectId, $keys, $clock);
     }
 
-    public function handle(VerifyIdToken $action): Token
+    public function handle(VerifyIdToken $action)
     {
         return $this->handler->handle($action);
     }
 
-    private static function discoverHandler(string $projectId, Keys $keys, Clock $clock): Handler
+    private static function discoverHandler(string $projectId, Keys $keys, Clock $clock)
     {
         if (class_exists(JWT::class)) {
             return new VerifyIdToken\WithFirebaseJWT($projectId, $keys, $clock);
