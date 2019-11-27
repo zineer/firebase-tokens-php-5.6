@@ -30,7 +30,7 @@ final class WithStreamContext implements Handler
         $stream = fopen($action->url(), 'rb', false, $context);
 
         $metadata = stream_get_meta_data($stream);
-        $headers = $metadata['wrapper_data'] ?? [];
+        $headers = isset($metadata['wrapper_data']) ? $metadata['wrapper_data']: [];
 
         $expiresAt = null;
 
