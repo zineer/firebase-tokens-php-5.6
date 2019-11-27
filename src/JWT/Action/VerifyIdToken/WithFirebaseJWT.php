@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Action\VerifyIdToken;
 
 use DomainException;
@@ -28,14 +26,14 @@ final class WithFirebaseJWT implements Handler
     /** @var Clock */
     private $clock;
 
-    public function __construct(string $projectId, Keys $keys, Clock $clock)
+    public function __construct($projectId, Keys $keys, Clock $clock)
     {
         $this->projectId = $projectId;
         $this->keys = $keys;
         $this->clock = $clock;
     }
 
-    public function handle(VerifyIdToken $action): Token
+    public function handle(VerifyIdToken $action)
     {
         $tokenString = $action->token();
 
