@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Action;
 
 use DateInterval;
@@ -28,7 +26,7 @@ final class CreateCustomToken
         $this->ttl = Duration::fromDateIntervalSpec(self::DEFAULT_TTL);
     }
 
-    public static function forUid(string $uid): self
+    public static function forUid($uid)
     {
         $action = new self();
         $action->uid = $uid;
@@ -36,7 +34,7 @@ final class CreateCustomToken
         return $action;
     }
 
-    public function withChangedUid(string $uid): self
+    public function withChangedUid($uid)
     {
         $action = clone $this;
         $action->uid = $uid;
@@ -44,7 +42,7 @@ final class CreateCustomToken
         return $action;
     }
 
-    public function withCustomClaim(string $name, $value): self
+    public function withCustomClaim($name, $value)
     {
         $action = clone $this;
         $action->customClaims[$name] = $value;
@@ -52,7 +50,7 @@ final class CreateCustomToken
         return $action;
     }
 
-    public function withCustomClaims(array $claims): self
+    public function withCustomClaims($claims)
     {
         $action = clone $this;
         $action->customClaims = $claims;
@@ -60,7 +58,7 @@ final class CreateCustomToken
         return $action;
     }
 
-    public function withAddedCustomClaims(array $claims): self
+    public function withAddedCustomClaims($claims)
     {
         $action = clone $this;
         $action->customClaims = array_merge($action->customClaims, $claims);
@@ -71,7 +69,7 @@ final class CreateCustomToken
     /**
      * @param Duration|DateInterval|string|int $ttl
      */
-    public function withTimeToLive($ttl): self
+    public function withTimeToLive($ttl)
     {
         $ttl = Duration::make($ttl);
 
@@ -89,17 +87,17 @@ final class CreateCustomToken
         return $action;
     }
 
-    public function uid(): string
+    public function uid()
     {
         return $this->uid;
     }
 
-    public function customClaims(): array
+    public function customClaims()
     {
         return $this->customClaims;
     }
 
-    public function timeToLive(): Duration
+    public function timeToLive()
     {
         return $this->ttl;
     }

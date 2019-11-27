@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Contract;
 
 use DateTimeImmutable;
@@ -24,12 +22,12 @@ trait ExpirableTrait
         return $expirable;
     }
 
-    public function isExpiredAt(DateTimeInterface $now): bool
+    public function isExpiredAt(DateTimeInterface $now)
     {
         return $this->expirationTime < $now;
     }
 
-    public function expiresAt(): DateTimeImmutable
+    public function expiresAt()
     {
         // @codeCoverageIgnoreStart
         if (!$this->expirationTime) {

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Keys;
 
 use DateTimeImmutable;
@@ -20,7 +18,7 @@ final class ExpiringKeys implements Keys, Expirable
         $this->expirationTime = new DateTimeImmutable('0001-01-01'); // Very distant past :)
     }
 
-    public static function withValuesAndExpirationTime(array $values, DateTimeImmutable $expirationTime): self
+    public static function withValuesAndExpirationTime($values, DateTimeImmutable $expirationTime)
     {
         $keys = new self();
         $keys->values = $values;

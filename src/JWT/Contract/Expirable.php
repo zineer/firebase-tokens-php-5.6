@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Contract;
 
 use DateTimeImmutable;
@@ -11,7 +9,7 @@ interface Expirable
 {
     public function withExpirationTime(DateTimeImmutable $time);
 
-    public function isExpiredAt(DateTimeInterface $now): bool;
+    public function isExpiredAt(DateTimeInterface $now);
 
     public function expiresAt(): DateTimeImmutable;
 }

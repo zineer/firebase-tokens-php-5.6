@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Error;
 
 use LogicException;
@@ -9,14 +7,14 @@ use Throwable;
 
 final class DiscoveryFailed extends LogicException
 {
-    public static function because(string $reason, int $code = null, Throwable $previous = null): self
+    public static function because($reason, $code = null, Throwable $previous = null)
     {
         $code = $code ?: 0;
 
         return new self($reason, $code, $previous);
     }
 
-    public static function noJWTLibraryFound(): self
+    public static function noJWTLibraryFound()
     {
         $message = <<<MESSAGE
 Unable to create token handlers. Please install one of the following JWT libraries:
@@ -36,7 +34,7 @@ MESSAGE;
         return self::because($message);
     }
 
-    public static function noHttpLibraryFound(): self
+    public static function noHttpLibraryFound()
     {
         $message = <<<MESSAGE
 Unable to find a HTTP transport to fetch public keys from Google. Please set 

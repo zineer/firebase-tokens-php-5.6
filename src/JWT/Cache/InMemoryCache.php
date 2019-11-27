@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Cache;
 
 use DateInterval;
@@ -22,12 +20,12 @@ final class InMemoryCache implements CacheInterface
         $this->clock = new SystemClock();
     }
 
-    public static function createEmpty(): self
+    public static function createEmpty()
     {
         return new self();
     }
 
-    public function withClock(Clock $clock): self
+    public function withClock(Clock $clock)
     {
         $cache = new self();
         $cache->clock = $clock;
@@ -52,7 +50,7 @@ final class InMemoryCache implements CacheInterface
         return $default;
     }
 
-    public function set($key, $value, $ttl = null): bool
+    public function set($key, $value, $ttl = null)
     {
         $now = $this->clock->now();
         $expires = null;
@@ -70,14 +68,14 @@ final class InMemoryCache implements CacheInterface
         return true;
     }
 
-    public function delete($key): bool
+    public function delete($key)
     {
         unset($this->items[$key]);
 
         return true;
     }
 
-    public function clear(): bool
+    public function clear()
     {
         $this->items = [];
 
@@ -95,7 +93,7 @@ final class InMemoryCache implements CacheInterface
         return $result;
     }
 
-    public function setMultiple($values, $ttl = null): bool
+    public function setMultiple($values, $ttl = null)
     {
         foreach ($values as $key => $value) {
             $this->set($key, $value, $ttl);
@@ -104,7 +102,7 @@ final class InMemoryCache implements CacheInterface
         return true;
     }
 
-    public function deleteMultiple($keys): bool
+    public function deleteMultiple($keys)
     {
         foreach ($keys as $key) {
             $this->delete($key);
@@ -113,7 +111,7 @@ final class InMemoryCache implements CacheInterface
         return true;
     }
 
-    public function has($key): bool
+    public function has($key)
     {
         $now = $this->clock->now();
 

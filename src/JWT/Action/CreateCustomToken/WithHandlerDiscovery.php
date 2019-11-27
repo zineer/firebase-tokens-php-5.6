@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Action\CreateCustomToken;
 
 use Firebase\JWT\JWT;
@@ -16,17 +14,17 @@ final class WithHandlerDiscovery implements Handler
     /** @var Handler */
     private $handler;
 
-    public function __construct(string $clientEmail, string $privateKey, Clock $clock)
+    public function __construct($clientEmail, $privateKey, Clock $clock)
     {
         $this->handler = self::discoverHandler($clientEmail, $privateKey, $clock);
     }
 
-    public function handle(CreateCustomToken $action): Token
+    public function handle(CreateCustomToken $action)
     {
         return $this->handler->handle($action);
     }
 
-    private static function discoverHandler(string $clientEmail, string $privateKey, Clock $clock): Handler
+    private static function discoverHandler(string $clientEmail, string $privateKey, Clock $clock)
     {
         if (class_exists(JWT::class)) {
             return new CreateCustomToken\WithFirebaseJWT($clientEmail, $privateKey, $clock);

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Action\CreateCustomToken;
 
 use Kreait\Clock;
@@ -29,7 +27,7 @@ final class WithLcobucciV3JWT implements Handler
     /** @var Clock */
     private $clock;
 
-    public function __construct(string $clientEmail, string $privateKey, Clock $clock)
+    public function __construct($clientEmail, $privateKey, Clock $clock)
     {
         $this->clientEmail = $clientEmail;
         $this->privateKey = $privateKey;
@@ -37,7 +35,7 @@ final class WithLcobucciV3JWT implements Handler
         $this->clock = $clock;
     }
 
-    public function handle(CreateCustomToken $action): Token
+    public function handle(CreateCustomToken $action)
     {
         $now = $this->clock->now();
 

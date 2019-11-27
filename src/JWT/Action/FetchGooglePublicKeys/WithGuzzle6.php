@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Action\FetchGooglePublicKeys;
 
 use GuzzleHttp\ClientInterface;
@@ -27,7 +25,7 @@ final class WithGuzzle6 implements Handler
         $this->clock = $clock;
     }
 
-    public function handle(FetchGooglePublicKeys $action): Keys
+    public function handle(FetchGooglePublicKeys $action)
     {
         $url = $action->url();
 

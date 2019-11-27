@@ -1,6 +1,5 @@
 <?php
 
-declare(strict_types=1);
 
 namespace Kreait\Firebase\JWT;
 
@@ -21,14 +20,14 @@ final class CustomTokenGenerator
         $this->handler = $handler;
     }
 
-    public static function withClientEmailAndPrivateKey(string $clientEmail, string $privateKey): self
+    public static function withClientEmailAndPrivateKey($clientEmail, $privateKey)
     {
         $handler = new WithHandlerDiscovery($clientEmail, $privateKey, new SystemClock());
 
         return new self($handler);
     }
 
-    public function execute(CreateCustomToken $action): Token
+    public function execute(CreateCustomToken $action)
     {
         return $this->handler->handle($action);
     }
@@ -36,7 +35,7 @@ final class CustomTokenGenerator
     /**
      * @throws CustomTokenCreationFailed
      */
-    public function createCustomToken(string $uid, array $claims = null, $timeToLive = null): Token
+    public function createCustomToken($uid, $claims = null, $timeToLive = null)
     {
         $action = CreateCustomToken::forUid($uid);
 

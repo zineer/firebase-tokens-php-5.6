@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Keys;
 
 use Kreait\Firebase\JWT\Contract\Keys;
@@ -15,12 +13,12 @@ final class StaticKeys implements Keys
     {
     }
 
-    public static function empty(): self
+    public static function empty()
     {
         return new self();
     }
 
-    public static function withValues(array $values): self
+    public static function withValues($values)
     {
         $keys = new self();
         $keys->values = $values;

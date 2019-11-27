@@ -1,14 +1,12 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Error;
 
 use RuntimeException;
 
 final class IdTokenVerificationFailed extends RuntimeException
 {
-    public static function withTokenAndReasons(string $token, array $reasons): self
+    public static function withTokenAndReasons($token, $reasons)
     {
         if (strlen($token) > 18) {
             $token = substr($token, 0, 15).'...';

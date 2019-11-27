@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Action\CreateCustomToken;
 
 use Firebase\JWT\JWT;
@@ -23,14 +21,14 @@ final class WithFirebaseJWT implements Handler
     /** @var Clock */
     private $clock;
 
-    public function __construct(string $clientEmail, string $privateKey, Clock $clock)
+    public function __construct($clientEmail, $privateKey, Clock $clock)
     {
         $this->clientEmail = $clientEmail;
         $this->privateKey = $privateKey;
         $this->clock = $clock;
     }
 
-    public function handle(Action\CreateCustomToken $action): Token
+    public function handle(Action\CreateCustomToken $action)
     {
         $now = $this->clock->now();
 

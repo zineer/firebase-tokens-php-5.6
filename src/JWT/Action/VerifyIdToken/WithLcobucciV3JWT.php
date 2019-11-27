@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Action\VerifyIdToken;
 
 use Kreait\Clock;
@@ -30,7 +28,7 @@ final class WithLcobucciV3JWT implements Handler
     /** @var Signer */
     private $signer;
 
-    public function __construct(string $projectId, Keys $keys, Clock $clock)
+    public function __construct($projectId, Keys $keys, Clock $clock)
     {
         $this->projectId = $projectId;
         $this->keys = $keys;
@@ -38,7 +36,7 @@ final class WithLcobucciV3JWT implements Handler
         $this->signer = new Sha256();
     }
 
-    public function handle(VerifyIdToken $action): Token
+    public function handle(VerifyIdToken $action)
     {
         $tokenString = $action->token();
         $leeway = $action->leewayInSeconds();

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Contract;
 
 trait KeysTrait
@@ -9,7 +7,7 @@ trait KeysTrait
     /** @var array */
     private $values = [];
 
-    public function all(): array
+    public function all()
     {
         return $this->values;
     }

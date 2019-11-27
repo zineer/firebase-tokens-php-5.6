@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT;
 
 final class Token implements Contract\Token
@@ -19,7 +17,7 @@ final class Token implements Contract\Token
     {
     }
 
-    public static function withValues(string $encodedString, array $headers, array $payload): self
+    public static function withValues($encodedString, $headers, $payload)
     {
         $token = new self();
 
@@ -30,22 +28,22 @@ final class Token implements Contract\Token
         return $token;
     }
 
-    public function headers(): array
+    public function headers()
     {
         return $this->headers;
     }
 
-    public function payload(): array
+    public function payload()
     {
         return $this->payload;
     }
 
-    public function toString(): string
+    public function toString()
     {
         return $this->encodedString;
     }
 
-    public function __toString(): string
+    public function __toString()
     {
         return $this->toString();
     }

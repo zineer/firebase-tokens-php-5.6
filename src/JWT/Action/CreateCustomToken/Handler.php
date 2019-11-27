@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Action\CreateCustomToken;
 
 use Kreait\Firebase\JWT\Action\CreateCustomToken;
@@ -13,5 +11,5 @@ interface Handler
     /**
      * @throws CustomTokenCreationFailed
      */
-    public function handle(CreateCustomToken $action): Token;
+    public function handle(CreateCustomToken $action);
 }
