@@ -15,7 +15,7 @@ final class WithHandlerDiscovery implements Handler
     /** @var Handler */
     private $handler;
 
-    public function __construct(string $projectId, Keys $keys, Clock $clock)
+    public function __construct($projectId, Keys $keys, Clock $clock)
     {
         $this->handler = self::discoverHandler($projectId, $keys, $clock);
     }
