@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT;
 
 use InvalidArgumentException;
@@ -24,12 +22,12 @@ final class IdTokenVerifier
         $this->handler = $handler;
     }
 
-    public static function createWithProjectId(string $projectId): self
+    public static function createWithProjectId($projectId)
     {
         return self::createWithProjectIdAndCache($projectId, InMemoryCache::createEmpty());
     }
 
-    public static function createWithProjectIdAndCache(string $projectId, $cache): self
+    public static function createWithProjectIdAndCache($projectId, $cache)
     {
         $clock = new SystemClock();
         $keyHandler = new FetchGooglePublicKeys\WithHandlerDiscovery($clock);
@@ -48,7 +46,7 @@ final class IdTokenVerifier
         return new self($handler);
     }
 
-    public function execute(VerifyIdToken $action): Token
+    public function execute(VerifyIdToken $action)
     {
         return $this->handler->handle($action);
     }
@@ -56,7 +54,7 @@ final class IdTokenVerifier
     /**
      * @throws IdTokenVerificationFailed
      */
-    public function verifyIdToken(string $token): Token
+    public function verifyIdToken($token)
     {
         return $this->execute(VerifyIdToken::withToken($token));
     }
@@ -65,7 +63,7 @@ final class IdTokenVerifier
      * @throws InvalidArgumentException on invalid leeway
      * @throws IdTokenVerificationFailed
      */
-    public function verifyIdTokenWithLeeway(string $token, int $leewayInSeconds): Token
+    public function verifyIdTokenWithLeeway($token, $leewayInSeconds)
     {
         return $this->execute(VerifyIdToken::withToken($token)->withLeewayInSeconds($leewayInSeconds));
     }
