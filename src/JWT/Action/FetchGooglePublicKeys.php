@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Action;
 
 use DateInterval;
@@ -22,7 +20,7 @@ final class FetchGooglePublicKeys
         $this->fallbackCacheDuration = Duration::fromDateIntervalSpec(self::DEFAULT_FALLBACK_CACHE_DURATION);
     }
 
-    public static function fromGoogle(): self
+    public static function fromGoogle()
     {
         return new self();
     }
@@ -30,7 +28,7 @@ final class FetchGooglePublicKeys
     /**
      * Use this method only if Google has changed the default URL and the library hasn't been updated yet.
      */
-    public static function fromUrl(string $url): self
+    public static function fromUrl($url)
     {
         $action = new self();
         $action->url = $url;
@@ -44,7 +42,7 @@ final class FetchGooglePublicKeys
      *
      * @param Duration|DateInterval|string| int $duration
      */
-    public function ifKeysDoNotExpireCacheFor($duration): self
+    public function ifKeysDoNotExpireCacheFor($duration)
     {
         $duration = Duration::make($duration);
 
@@ -54,12 +52,12 @@ final class FetchGooglePublicKeys
         return $action;
     }
 
-    public function url(): string
+    public function url()
     {
         return $this->url;
     }
 
-    public function getFallbackCacheDuration(): Duration
+    public function getFallbackCacheDuration()
     {
         return $this->fallbackCacheDuration;
     }
