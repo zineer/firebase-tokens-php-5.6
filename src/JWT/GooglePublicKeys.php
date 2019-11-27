@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT;
 
 use Kreait\Clock;
@@ -29,7 +27,7 @@ final class GooglePublicKeys implements Keys
         $this->handler = $handler ?: new WithHandlerDiscovery($this->clock);
     }
 
-    public function all(): array
+    public function all()
     {
         $keysAreThereButExpired = $this->keys instanceof Expirable && $this->keys->isExpiredAt($this->clock->now());
 
