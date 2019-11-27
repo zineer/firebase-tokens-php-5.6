@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Value;
 
 use DateInterval;
@@ -25,7 +23,7 @@ final class Duration
     {
     }
 
-    public static function make($value): self
+    public static function make($value)
     {
         if ($value instanceof self) {
             return $value;
@@ -61,7 +59,7 @@ final class Duration
      *
      * @throws InvalidArgumentException
      */
-    public static function inSeconds(int $seconds): self
+    public static function inSeconds($seconds)
     {
         if ($seconds < 0) {
             throw new InvalidArgumentException('A duration can not be negative');
@@ -73,7 +71,7 @@ final class Duration
     /**
      * @throws InvalidArgumentException
      */
-    public static function fromDateIntervalSpec(string $spec): self
+    public static function fromDateIntervalSpec($spec)
     {
         try {
             $interval = new DateInterval($spec);
@@ -84,7 +82,7 @@ final class Duration
         return self::fromDateInterval($interval);
     }
 
-    public static function fromDateInterval(DateInterval $interval): self
+    public static function fromDateInterval(DateInterval $interval)
     {
         $now = new DateTimeImmutable();
         $then = $now->add($interval);
@@ -99,56 +97,60 @@ final class Duration
         return $ttl;
     }
 
-    public static function none(): self
+    public static function none()
     {
         return self::fromDateIntervalSpec(self::NONE);
     }
 
-    public function value(): DateInterval
+    public function value()
     {
         return $this->value;
     }
 
-    public function isLargerThan($other): bool
+    public function isLargerThan($other)
     {
         return 1 === $this->compareTo($other);
     }
 
-    public function equals($other): bool
+    public function equals($other)
     {
         return 0 === $this->compareTo($other);
     }
 
-    public function isSmallerThan($other): bool
+    public function isSmallerThan($other)
     {
         return -1 === $this->compareTo($other);
     }
 
-    public function compareTo($other): int
+    public function compareTo($other)
     {
         $other = self::make($other);
 
         $now = self::now();
 
-        return $now->add($this->value) <=> $now->add($other->value);
+		$a = $now->add($this->value);
+		$b = $now->add($other->value);
+		if ($a == $b) return 0;
+		if ($a < $b) return -1;
+		return 1;
     }
 
-    public function toString(): string
+    public function toString()
     {
         return self::toDateIntervalSpec(self::normalizeInterval($this->value));
     }
 
-    public function __toString(): string
+    public function __toString()
     {
         return $this->toString();
     }
 
-    private static function now(): DateTimeImmutable
+    private static function now()
     {
         return new DateTimeImmutable('@'.time());
     }
 
-    private static function normalizeInterval(DateInterval $value): DateInterval
+    private static function normalizeInterval(DateInterval $value)
     {
         $now = self::now();
         $then = $now->add($value);
@@ -156,7 +158,7 @@ final class Duration
         return $now->diff($then);
     }
 
-    private static function toDateIntervalSpec(DateInterval $value): string
+    private static function toDateIntervalSpec(DateInterval $value)
     {
         $spec = 'P';
         $spec .= 0 !== $value->y ? $value->y.'Y' : '';
