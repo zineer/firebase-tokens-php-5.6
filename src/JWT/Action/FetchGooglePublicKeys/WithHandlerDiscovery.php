@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Action\FetchGooglePublicKeys;
 
 use GuzzleHttp\Client;
@@ -21,12 +19,12 @@ final class WithHandlerDiscovery implements Handler
         $this->handler = self::discover($clock);
     }
 
-    public function handle(FetchGooglePublicKeys $action): Keys
+    public function handle(FetchGooglePublicKeys $action)
     {
         return $this->handler->handle($action);
     }
 
-    private static function discover(Clock $clock): Handler
+    private static function discover(Clock $clock)
     {
         if (filter_var(ini_get('allow_url_fopen'), FILTER_VALIDATE_BOOLEAN)) {
             return new FetchGooglePublicKeys\WithStreamContext($clock);
