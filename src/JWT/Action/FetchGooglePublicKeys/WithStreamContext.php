@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Action\FetchGooglePublicKeys;
 
 use Kreait\Clock;
@@ -20,7 +18,7 @@ final class WithStreamContext implements Handler
         $this->clock = $clock;
     }
 
-    public function handle(FetchGooglePublicKeys $action): Keys
+    public function handle(FetchGooglePublicKeys $action)
     {
         $context = stream_context_create([
             'http' => [
