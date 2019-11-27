@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Action\VerifyIdToken;
 
 use Kreait\Firebase\JWT\Action\VerifyIdToken;
@@ -16,5 +14,5 @@ interface Handler
     /**
      * @throws IdTokenVerificationFailed
      */
-    public function handle(VerifyIdToken $action): Token;
+    public function handle(VerifyIdToken $action);
 }
