@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kreait\Firebase\JWT\Action\FetchGooglePublicKeys;
 
 use Kreait\Clock;
@@ -29,7 +27,7 @@ final class WithPsr16SimpleCache implements Handler
         $this->clock = $clock;
     }
 
-    public function handle(FetchGooglePublicKeys $action): Keys
+    public function handle(FetchGooglePublicKeys $action)
     {
         $now = $this->clock->now();
 
