@@ -11,5 +11,5 @@ interface Expirable
 
     public function isExpiredAt(DateTimeInterface $now);
 
-    public function expiresAt(): DateTimeImmutable;
+    public function expiresAt();
 }
