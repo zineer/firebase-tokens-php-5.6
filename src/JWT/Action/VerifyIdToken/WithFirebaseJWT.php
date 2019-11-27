@@ -82,7 +82,7 @@ final class WithFirebaseJWT implements Handler
 
         $errors = [];
 
-        $audience = iseet($token->aud) ? $token->aud : null;
+        $audience = isset($token->aud) ? $token->aud : null;
         if (!$audience || $audience !== $this->projectId) {
             $errors[] = "The token's audience doesn't match the current Firebase project. Expected '{$this->projectId}', got '{$audience}'.";
         }
@@ -93,12 +93,12 @@ final class WithFirebaseJWT implements Handler
             $errors[] = "The token was issued by the wrong principal. Expected '{$expectedIssuer}', got '{$issuer}'";
         }
 
-        $subject = iseet($token->sub) ? $token->sub : null;
+        $subject = isset($token->sub) ? $token->sub : null;
         if (!$subject || !is_string($subject) || trim($subject) === '') {
             $errors[] = "The token's 'sub' claim must be a non-empty string. Got: '{$subject}' (".gettype($subject).')';
         }
 
-        $authTime = iseet($token->auth_time) ? $token->auth_time : null;
+        $authTime = isset($token->auth_time) ? $token->auth_time : null;
         if (!$authTime || ($authTime > ($now->getTimestamp() + $leeway))) {
             $errors[] = "The token's 'auth_time' claim (the time when the user authenticated) must be present and be in the past.";
         }
