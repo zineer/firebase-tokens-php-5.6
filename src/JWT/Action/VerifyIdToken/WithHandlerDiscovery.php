@@ -26,7 +26,7 @@ final class WithHandlerDiscovery implements Handler
     }
 
     private static function discoverHandler($projectId, Keys $keys, Clock $clock)
-    
+    {
         if (class_exists(JWT::class)) {
             return new VerifyIdToken\WithFirebaseJWT($projectId, $keys, $clock);
         }
